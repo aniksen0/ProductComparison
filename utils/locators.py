@@ -13,15 +13,6 @@ class common_locators(object):
         return page_locator
 
 
-class Bdjobs(object):
-    advertisement = (By.XPATH, '//img[@title="Close"]')
-    searchField = (By.XPATH, "//input[@id='txtKeyword']")
-    clickSearchButton = (By.XPATH, '//input[@type="submit"]')
-    product_name_h1 = (By.XPATH, '//h1[@class="base-text font-weight-bold h2 product-header"]')
-    product_price_span = (By.XPATH, "//span[contains(@class,'h4')]")
-    product_image_url = (By.XPATH, "//li[@class='product bottom-slider position-relative flex-active-slide']//a")
-
-
 class GadgetAndGear(object):
     advertisement = (By.XPATH, '//a[@class="modal-close is-attached is-outer d"]')
     SearchField = (By.XPATH, "(//input[@id='searchItem'])[2]")

@@ -8,6 +8,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.maximize_window()
-bayt_search = GadgetAndGear(driver)
-bayt_search.baytjob()
+GadgetAndGear = GadgetAndGear(driver)
+GadgetAndGear.gadget_and_gear()
 driver.quit()

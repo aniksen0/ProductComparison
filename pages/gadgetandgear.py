@@ -9,9 +9,9 @@ import requests
 
 class GadgetAndGear(BasePage):
     def __init__(self, driver):
-        self.locator = locators.BaytLocator
+        self.locator = locators.GadgetAndGear
         self.filepath = pathlib.Path(__file__).parent.parent / f"utils/{testcase_data.filename}"
-        self.sheetname = testcase_data.baytjobsheet
+        self.sheetname = testcase_data.GadgetAndGear
         super(GadgetAndGear, self).__init__(driver)
 
     def go_to_website(self):
@@ -25,6 +25,7 @@ class GadgetAndGear(BasePage):
             print("no advertisement found")
 
     def searchquery(self):
+        self.find_element2(*self.locator.SearchField).click()
         self.find_element2(*self.locator.SearchField).send_keys(testcase_data.searchkeyword)
         time.sleep(2)
         self.click(*self.locator.SearchButton)
@@ -92,7 +93,8 @@ class GadgetAndGear(BasePage):
                 write_col_auto(self.filepath, self.sheetname, data)
                 self.filter(data)
                 break
-    def baytjob(self):
+
+    def gadget_and_gear(self):
         self.go_to_website()
         time.sleep(2)
         self.close_ad()
