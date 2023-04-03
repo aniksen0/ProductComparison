@@ -15,15 +15,12 @@ class common_locators(object):
 
 class GadgetAndGear(object):
     advertisement = (By.XPATH, '//a[@class="modal-close is-attached is-outer d"]')
-    SearchField = (By.XPATH, "(//input[@id='searchItem'])[2]")
-    SearchButton = (By.XPATH, "(//button[@type='submit'])[2]")
+    SearchField = (By.XPATH, "(//input[@id='searchItem'])[1]")
+    SearchButton = (By.XPATH, "(//button[@type='submit'])[1]")
     single_product_div = (By.XPATH, '//div[@class="row"]//ul//li')
-    titleName = (By.XPATH, './/a[@data-js-aid="jobID"]')
-    companyName = (By.XPATH, './/b[@class="p10r"]')
-    location = (By.XPATH, '//ul[@class="list is-basic t-small"]//span')
-    Experience = (By.XPATH, '/html[1]/body[1]/div[4]/section[1]/div[2]/div[1]/div[1]/div[2]/dl[2]/div[2]/dd[1]')
-    deadline = (By.XPATH, '')
-    url_locator = (By.XPATH, './/a[@data-js-aid="jobID"]')
+    product_name_h1 = (By.XPATH, ".//p[@class='product-name d-block mb-0']")
+    product_price_span = (By.XPATH, ".//p[contains(@class,'product-price')]")
+    product_image_url = (By.XPATH, ".//div[contains(@class,'product-image')]//img")
 
     @staticmethod
     def pagination(page_number):

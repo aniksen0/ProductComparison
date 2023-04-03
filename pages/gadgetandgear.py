@@ -37,17 +37,12 @@ class GadgetAndGear(BasePage):
             write_col_auto(self.filepath, self.sheetname, data)
 
     def search_result(self):
-        # self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         time.sleep(3)
         self.close_ad()
         single_product = self.driver.find_elements(*self.locator.single_product_div)
         print(single_product)
-        print(f"this len of singlejob {len(single_product)}")
+        print(f" len of single_product {len(single_product)}")
         for product in single_product:
-            try:
-                product.click()
-            except:
-                title = "there is an error"
             try:
                 self.wait_till_visibility_of_element_located(2, self.locator.product_name_h1)
                 product_name = product.find_element(*self.locator.product_name_h1).text
@@ -60,20 +55,14 @@ class GadgetAndGear(BasePage):
                 product_price = "No data found"
             try:
                 self.wait_till_visibility_of_element_located(2, self.locator.product_image_url)
-                image_url = product.find_element(*self.locator.product_image_url).get_attribute('href')
+                image_url = product.find_element(*self.locator.product_image_url).get_attribute('src')
             except:
                 image_url = "No data found"
-            try:
-                self.wait_till_visibility_of_element_located(2, self.locator.deadline)
-                deadline = product.find_element(*self.locator.deadline).text
-            except:
-                deadline = "No data found"
 
             print(product_name)
             print(product_price)
-            print(deadline)
             print(image_url)
-            data = [title, product_price, deadline, image_url]
+            # data = [product_name, product_price, image_url]
             # self.filter(data)
 
     def page(self, page_number):
@@ -101,4 +90,4 @@ class GadgetAndGear(BasePage):
         time.sleep(2)
         self.searchquery()
         self.search_result()
-        self.pagination()
+        # self.pagination()
