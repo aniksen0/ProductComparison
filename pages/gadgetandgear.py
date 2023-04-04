@@ -1,17 +1,13 @@
 import time
 from pages.base_page import BasePage
 from utils import locators
-from utils import testcase_data
 from utils.openpyxlfunction import *
-import pathlib
-import requests
 
 
 class GadgetAndGear(BasePage):
-    def __init__(self, driver):
+    def __init__(self, driver, search_data):
         self.locator = locators.GadgetAndGear
-        self.filepath = pathlib.Path(__file__).parent.parent / f"utils/{testcase_data.filename}"
-        self.sheetname = testcase_data.GadgetAndGear
+        self.query_data = search_data
         super(GadgetAndGear, self).__init__(driver)
 
     def go_to_website(self):
@@ -26,15 +22,15 @@ class GadgetAndGear(BasePage):
 
     def searchquery(self):
         self.find_element2(*self.locator.SearchField).click()
-        self.find_element2(*self.locator.SearchField).send_keys(testcase_data.searchkeyword)
+        self.find_element2(*self.locator.SearchField).send_keys(self.query_data)
         time.sleep(2)
         self.click(*self.locator.SearchButton)
         time.sleep(2)
 
-    def filter(self, data):
-        data2 = testcase_data.RequiredParameter.split(",")
-        if str(data2[0]).lower() in str(data[0]).lower() or str(data2[1]).lower() in str(data[0]).lower():
-            write_col_auto(self.filepath, self.sheetname, data)
+    # def filter(self, data):
+    #     data2 = testcase_data.RequiredParameter.split(",")
+    #     if str(data2[0]).lower() in str(data[0]).lower() or str(data2[1]).lower() in str(data[0]).lower():
+    #         write_col_auto(self.filepath, self.sheetname, data)
 
     def search_result(self):
         time.sleep(3)
@@ -62,8 +58,8 @@ class GadgetAndGear(BasePage):
             print(product_name)
             print(product_price)
             print(image_url)
-            # data = [product_name, product_price, image_url]
-            # self.filter(data)
+            data = [product_name, product_price, image_url]
+        return data
 
     def page(self, page_number):
         pagelocator = self.locator.pagination(page_number)
@@ -89,5 +85,5 @@ class GadgetAndGear(BasePage):
         self.close_ad()
         time.sleep(2)
         self.searchquery()
-        self.search_result()
+        return self.search_result()
         # self.pagination()

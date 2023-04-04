@@ -60,7 +60,6 @@ class BasePage(object):
     def get_attribute_value(self, attribute, *locator):
         element = self.driver.find_element(*locator)
         val = element.get_attribute(attribute)
-        # print(val)
         return val
 
     # Get CSS property ✓✓
