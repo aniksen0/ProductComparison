@@ -4,16 +4,15 @@ from utils import locators
 from utils.openpyxlfunction import *
 
 
-class GadgetAndGear(BasePage):
+class Daraz(BasePage):
     def __init__(self, driver, search_data):
-        self.locator = locators.GadgetAndGear
+        self.locator = locators.Daraz
         self.query_data = search_data
-        super(GadgetAndGear, self).__init__(driver)
-        self.gadget_and_gear_data = []
+        super(Daraz, self).__init__(driver)
+        self.daraz_data = []
 
     def go_to_website(self):
-        self.driver.get("https://gadgetandgear.com/")
-
+        self.driver.get("https://www.daraz.com.bd")
     def close_ad(self):
         try:
             self.click(*self.locator.advertisement)
@@ -42,7 +41,7 @@ class GadgetAndGear(BasePage):
         for product in single_product:
             try:
                 self.wait_till_visibility_of_element_located(2, self.locator.product_name_h1)
-                product_name = product.find_element(*self.locator.product_name_h1).text
+                product_name = product.find_element(*self.locator.product_name_h1).get_attribute("title")
             except:
                 product_name = "No data found"
             try:
@@ -61,9 +60,9 @@ class GadgetAndGear(BasePage):
             print(image_url)
             data = [product_name, product_price, image_url]
             if product_name != "No data found":
-                self.gadget_and_gear_data.append(data)
+                self.daraz_data.append(data)
 
-        return self.gadget_and_gear_data
+        return self.daraz_data
 
     def page(self, page_number):
         pagelocator = self.locator.pagination(page_number)
@@ -83,7 +82,7 @@ class GadgetAndGear(BasePage):
                 self.filter(data)
                 break
 
-    def gadget_and_gear(self):
+    def scrape_daraz(self):
         self.go_to_website()
         time.sleep(2)
         self.close_ad()

@@ -13,6 +13,16 @@ class common_locators(object):
         return page_locator
 
 
+class Daraz(object):
+    advertisement = (By.XPATH, '//a[@class="modal-close is-attached is-outer d"]')
+    SearchField = (By.XPATH, "//input[@id='q']")
+    SearchButton = (By.XPATH, "//button[@class='search-box__button--1oH7']")
+    single_product_div = (By.XPATH, '//div[contains(@class,"grid")]')
+    product_name_h1 = (By.XPATH, ".//div[contains(@class,'title')]//a")
+    product_price_span = (By.XPATH, ".//div[contains(@class,'price')]//span")
+    product_image_url = (By.XPATH, ".//div[contains(@class,'mainPic')]//img")
+
+
 class GadgetAndGear(object):
     advertisement = (By.XPATH, '//a[@class="modal-close is-attached is-outer d"]')
     SearchField = (By.XPATH, "(//input[@id='searchItem'])[1]")
