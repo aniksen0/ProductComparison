@@ -13,6 +13,7 @@ class Daraz(BasePage):
 
     def go_to_website(self):
         self.driver.get("https://www.daraz.com.bd")
+
     def close_ad(self):
         try:
             self.click(*self.locator.advertisement)
@@ -88,5 +89,7 @@ class Daraz(BasePage):
         self.close_ad()
         time.sleep(2)
         self.searchquery()
-        return self.search_result()
+        result = self.search_result()
         # self.pagination()
+        self.driver.quit()
+        return result

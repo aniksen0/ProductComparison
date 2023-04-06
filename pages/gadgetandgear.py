@@ -89,5 +89,7 @@ class GadgetAndGear(BasePage):
         self.close_ad()
         time.sleep(2)
         self.searchquery()
-        return self.search_result()
+        result= self.search_result()
+        self.driver.quit()
+        return result
         # self.pagination()
